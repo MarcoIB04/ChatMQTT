@@ -1,6 +1,16 @@
 import suscriber from './suscriber.js';
 import publishMessage from './publisher.js';
+import readline from 'readline';
 
-//suscriber("test")
+const topic = 'test';
 
-publishMessage("test", "mensaje")
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Mensaje: ', (message) => {
+  publishMessage(topic, message);
+  
+  rl.close();
+});
