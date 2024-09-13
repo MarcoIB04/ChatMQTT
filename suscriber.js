@@ -1,7 +1,7 @@
 import mqtt from "mqtt";
 
 const protocol = 'mqtt';
-const host = '54.89.184.239';
+const host = '52.90.90.9';
 const port = '1883';
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
 
