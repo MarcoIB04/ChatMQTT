@@ -16,8 +16,6 @@ const client = mqtt.connect(connectUrl, {
   reconnectPeriod: 1000,
 });
 
-
-
 //Publisher function to send messages 
 export default function publishMessage(topic, message) {
     console.log(`Sending Topic: ${topic}, Message: ${message}`);
