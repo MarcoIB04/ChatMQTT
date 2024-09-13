@@ -1,6 +1,6 @@
 const mqtt = require('mqtt')
 
-const host = '44.204.145.10'
+const host = '34.226.121.255'
 const port = '1883'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
 
@@ -22,7 +22,7 @@ client.on('connect', () => {
 
   client.subscribe([topic], () => {
     console.log(`Subscribe to topic '${topic}'`)
-    client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
+    client.publish(topic, 'mqtt test', { qos: 0, retain: false }, (error) => {
       if (error) {
         console.error(error)
       }
@@ -34,10 +34,4 @@ client.on('message', (topic, payload) => {
   console.log('Received Message:', topic, payload.toString())
 })
 
-client.on('connect', () => {
-    client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
-      if (error) {
-        console.error(error)
-      }
-    })
-  })
+
