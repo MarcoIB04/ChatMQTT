@@ -1,4 +1,7 @@
 import mqtt from"mqtt";
+import readline from 'readline';
+
+const topic = 'test';
 
 const protocol = 'mqtt';
 const host = '54.89.184.239';
@@ -16,11 +19,20 @@ const client = mqtt.connect(connectUrl, {
   reconnectPeriod: 1000,
 });
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
 //Publisher function to send messages 
-export default function publishMessage(topic, message) {
-    console.log(`Sending Topic: ${topic}, Message: ${message}`);
-    client.publish(topic, message, {
-      qos: 0,
-      retain: false,
-    });
+export default function publishMessage() {
+    rl.question('Mensaje: ', (message) => {
+        client.publish(topic, message, {
+        qos: 0,
+        retain: false,
+        });
+        console.log(`Sent to topic: ${topic}`);
+    rl.close();
+    })
+
   }
